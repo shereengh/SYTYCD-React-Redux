@@ -5,10 +5,10 @@ const initialState = {
   filteredAuthors: [],
   loading: true
 };
-
+console.log(initialState.authors);
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_AUTHORS:
+    case actionTypes.FETCH_AUTHORS:
       return {
         ...state,
         authors: state.authors.push(action.payload),
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FILTER_AUTHORS:
       return {
         ...state,
-        filteredAuthors: state.authors.filter(author => {
+        filteredAuthors: state.filteredAuthors.filter(author => {
           return `${author.first_name} ${author.last_name}`
             .toLowerCase()
             .includes(action.payload);
